@@ -47,7 +47,7 @@ There's 4 things we first understand,
 2. Lookup `PDP` entry using `DTB` entry's PFN and VA's `pml4_index`
 3. Lookup `PD` entry using `PDP` entry's PFN and VA's `pd_index`
 4. Lookup `PT` entry using `PD` entry's PFN and VA's `pt_index`
-5. Translate to the physical address using `PT` entry's PFN and `offset`, the first 12-bits value of virtual address.
+5. Translate to the physical address using `PT` entry's PFN and VA's `offset`, the first 12-bits value of virtual address.
 
 ## Extra: PML5
 
