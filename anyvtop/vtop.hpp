@@ -124,7 +124,7 @@ namespace vtop
 
 		//
 		// 1. locate PML4 pointer that represents physical address of PML4 entry
-		// 2. copy PML4 entry from physical memory to our buffer
+		// 2. copy PML4 entry from physical address to our buffer
 		//    in order to locate PDP entry in next
 		//
 		pml4_entry.pointer = ( PPML4E )dtb + virtual_address.pml4_index;
@@ -143,7 +143,7 @@ namespace vtop
 
 		//
 		// 1. locate PDP pointer that represents physical address of PDP entry
-		// 2. copy PDP entry from physical memory to our buffer
+		// 2. copy PDP entry from physical address to our buffer
 		//    in order to locate PD entry in next
 		//
 		pdp_entry.pointer = ( PPDPE )( pml4_entry.value.pfn << PAGE_SHIFT ) + virtual_address.pdp_index;
@@ -162,7 +162,7 @@ namespace vtop
 
 		//
 		// 1. locate PD pointer that represents physical address of PD entry
-		// 2. copy PD entry from physical memory to our buffer
+		// 2. copy PD entry from physical address to our buffer
 		//    in order to locate PT entry in next
 		//
 		pd_entry.pointer = ( PPDE )( pdp_entry.value.pfn << PAGE_SHIFT ) + virtual_address.pd_index;
@@ -181,8 +181,8 @@ namespace vtop
 
 		//
 		// 1. locate PT pointer that represents physical address of PT entry
-		// 2. copy PT entry from physical memory to our buffer
-		//    in order to translate to the physical memory address
+		// 2. copy PT entry from physical address to our buffer
+		//    in order to translate to the physical address
 		//
 		pt_entry.pointer = ( PPTE )( pd_entry.value.pfn << PAGE_SHIFT ) + virtual_address.pt_index;
 		pt_entry.value = kernel::read_physical_memory<PTE>( ( uint64_t )pt_entry.pointer );
@@ -199,7 +199,7 @@ namespace vtop
 		printf( "[+] \033[0;106;30mpte\033[0m: 0x%llX\n", pt_entry.value.value );
 
 		//
-		// translate to the physical memory using PTE's PFN and VA's offset
+		// translate to the physical address using PTE's PFN and VA's offset
 		//
 		const uint64_t physical_address =
 			( pt_entry.value.pfn << PAGE_SHIFT ) + virtual_address.offset;
