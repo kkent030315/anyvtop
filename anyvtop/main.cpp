@@ -48,9 +48,6 @@ int main( int argc, const char** argv, const char** envp )
     VIRTUAL_ADDRESS virtual_address;
     virtual_address.value = &i_am_virtual_address;
 
-    //const auto nt_close = libanycall::find_ntoskrnl_export( "NtClose\n" );
-    //VIRTUAL_ADDRESS virtual_address = { ( void* )nt_close };
-
     const PHYSICAL_ADDRESS mm_pa =
         ANYCALL_INVOKE( MmGetPhysicalAddress, ( PVOID )virtual_address.value );
 
