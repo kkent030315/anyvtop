@@ -28,7 +28,7 @@ dt nt!_KPROCESS DirectoryTableBase
 ```
 
 If the virtual address is `KVA` *Kernel Virtual Address*, we could use system process's DTB.  
-The system process's DTB represents exact same value contained in `CR3` because the system process is a part of the kernels.
+The system process's DTB represents exact same value contained in `CR3` because it is a part of the kernels.
 
 Also if it is user's virtual address, ofcourse the DTB is different with the every single processes, so we have to lookup from the structure.
 
