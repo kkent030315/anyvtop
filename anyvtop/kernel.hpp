@@ -51,13 +51,26 @@ namespace kernel
 			( ntoskrnl_memcpy, dst, src, size );
 	}
 
-	void read_physical_memory( void* buffer, uint64_t physical_address, size_t size )
+	//
+	// read physical memory directly
+	//
+	void read_physical_memory( 
+		void* buffer, uint64_t physical_address, size_t size )
 	{
+		//
+		// map specified physical memory to virtual address
+		//
 		const auto mapped_va = 
 			libanycall::map_physical_memory( physical_address, size );
 
+		//
+		// copy to buffer
+		//
 		memcpy( buffer, ( void* )mapped_va, size );
 
+		//
+		// unmap
+		//
 		libanycall::unmap_physical_memory( mapped_va, size );
 	}
 
