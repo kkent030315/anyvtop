@@ -44,14 +44,14 @@ int main( int argc, const char** argv, const char** envp )
 
     printf( "\n[=] anyvtop by Kento Oki at www.godeye.club\n\n" );
 
-    uint64_t i_am_virtual_address = 0xABCDEF;
+    const uint64_t i_am_on_virtual_address = 0xABCDEF;
     VIRTUAL_ADDRESS virtual_address;
-    virtual_address.value = &i_am_virtual_address;
+    virtual_address.value = const_cast< uint64_t* >( &i_am_on_virtual_address );
 
     const PHYSICAL_ADDRESS mm_pa =
         ANYCALL_INVOKE( MmGetPhysicalAddress, ( PVOID )virtual_address.value );
 
-    uint64_t physical_address = 
+    const uint64_t physical_address = 
         vtop::vtop( virtual_address, GetCurrentProcessId() );
 
     const bool is_correct = 
