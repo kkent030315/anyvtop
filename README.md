@@ -12,7 +12,7 @@ x64 Windows implementation of virtual-address to physical-address translation
 
 # Windows Memory Management
 
-Modern x64 Windows uses `PML4` *Page Map Level 4* as paging mode. interpretation of the mode is a bit different with long/legacy mode on AMD64 and Intel64.  
+Modern x64 Windows uses `PML4` *Page Map Level 4* as paging mode. careful that interpretation of the mode is a bit different with long/legacy mode on AMD64 and Intel64.  
 This repository is an implementation of `virtual memory` a.k.a `linear memory` to `physical memory` translation, that usually done by the CPU's `MMU` *Memory Management Unit*.
 
 This implementation is similar to `MmGetPhysicalAddress`.  
