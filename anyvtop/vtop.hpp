@@ -48,11 +48,6 @@ namespace vtop
 	inline static constexpr uint32_t system_process_pid = 4;
 
 	//
-	// cr3.PageDirectoryBase
-	//
-	inline ULONG cached_pd_base;
-
-	//
 	// fetch directory table base (DTB)
 	// in case of system process which KVA belongs, DTB represents cr3
 	//
