@@ -47,7 +47,7 @@ namespace kernel
 			ntoskrnl_memcpy = ( void* )
 			libanycall::find_ntoskrnl_export( "memcpy" );
 
-		libanycall::invoke_void<decltype( &memcpy )>
+		libanycall::invoke<decltype( &memcpy )>
 			( ntoskrnl_memcpy, dst, src, size );
 	}
 
